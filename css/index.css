@@ -1,0 +1,1632 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.section {
+    overflow: hidden;
+    position: relative;
+}
+
+/*导航*/
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 99;
+    opacity: 0.8;
+    background: palegreen;
+    box-shadow: 1px 2px 2px rgba(128, 0, 128, .4);
+}
+
+.nav ul li {
+    float: left;
+    width: 150px;
+    cursor: pointer;
+    margin-right: 10px;
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+}
+
+.nav li:hover span {
+    opacity: 1;
+    transform: scale(15, 1);
+}
+
+.nav span {
+    left: 50%;
+    bottom: 0;
+    opacity: 0;
+    width: 10px;
+    height: 4px;
+    margin-left: -5px;
+    position: absolute;
+    transition: all 0.5s;
+    background: plum;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    font: normal 20px/60px '微软雅黑';
+}
+
+/*第一屏*/
+.first {
+    width: 100%;
+    background: url(../images/11.jpg);
+    background-size: 100%;
+
+}
+
+.first .logo {
+    width: 180px;
+    height: 180px;
+    margin: 100px 10%;
+    background: url(../images/qyqx4.jpg) no-repeat;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    animation: pic 10s linear infinite;
+}
+
+.first .info {
+    text-align: center;
+    color: #666;
+    width: 600px;
+    margin: 160px 100px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+
+}
+
+.first .info h1 {
+    transform: translate(2000px, 0);
+}
+
+.first .info p {
+    transform: translate(-2000px, 0);
+}
+
+.first.current .info p,
+.first.current .info h1 {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 1s;
+}
+
+/*翻书效果*/
+.book {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    margin-top: -150px;
+    width: 200px;
+    height: 300px;
+    background-color: #fff;
+    -webkit-transform: rotateX(30deg);
+    -ms-transform: rotateX(30deg);
+    -o-transform: rotateX(30deg);
+    transform: rotateX(30deg);
+}
+
+.preserve-3d {
+
+    /*transform-style属性指定了，该元素的子元素是（看起来）位于三维空间内，还是在该元素所在的平面内被扁平化。*/
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.book-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 300px;
+    border: 1px solid #1976D2;
+    text-align: center;
+}
+
+.book-page-box {
+    -webkit-transform-origin: 0 50%;
+    -moz-transform-origin: 0 50%;
+    -ms-transform-origin: 0 50%;
+    -o-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    -webkit-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+/*书的封面*/
+.book-page-1 .page-front {
+    background: url(../images/14185.jpg) no-repeat;
+    -webkit-background-size: 100%;
+
+}
+
+.flip-animation-1 {
+    animation: flipBook1 17s;
+    -moz-animation: flipBook1 17s; /* Firefox */
+    -webkit-animation: flipBook1 17s; /* Safari and Chrome */
+    -o-animation: flipBook1 17s; /* Opera */
+}
+
+/*书的第二页*/
+.book-page-2 .page-back, .book-page-2 .page-front {
+
+    background: url(../images/qyqx4.jpg) no-repeat;
+    -webkit-background-size: 100%;
+}
+
+.flip-animation-2 {
+    animation: flipBook2 13s 2s;
+    -moz-animation: flipBook2 13s 2s; /* Firefox */
+    -webkit-animation: flipBook2 13s 2s; /* Safari and Chrome */
+    -o-animation: flipBook2 13s 2s; /* Opera */
+}
+
+/*书的第三页*/
+.book-page-3 .page-back, .book-page-3 .page-front {
+    background: url(../images/qyqx3.jpg) no-repeat;
+    -webkit-background-size: 100%;
+}
+
+.flip-animation-3 {
+    animation: flipBook3 10s 3s;
+    -moz-animation: flipBook3 10s 3s; /* Firefox */
+    -webkit-animation: flipBook3 10s 3s; /* Safari and Chrome */
+    -o-animation: flipBook3 10s 3s; /* Opera */
+}
+
+/*书的第四页*/
+.book-page-4 .page-front {
+    background: url(../images/qyqx1.jpg) no-repeat;
+    -webkit-background-size: 100%;
+}
+
+/*第一屏动画*/
+
+@keyframes pic {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*翻书动画*/
+@keyframes flipBook1 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-160deg);
+        -ms-transform: rotateY(-160deg);
+        -o-transform: rotateY(-160deg);
+        transform: rotateY(-160deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+/* Firefox */
+@-moz-keyframes flipBook1 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-160deg);
+        -ms-transform: rotateY(-160deg);
+        -o-transform: rotateY(-160deg);
+        transform: rotateY(-160deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes flipBook1 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-160deg);
+        -ms-transform: rotateY(-160deg);
+        -o-transform: rotateY(-160deg);
+        transform: rotateY(-160deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+/* Opera */
+@-o-keyframes flipBook1 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-160deg);
+        -ms-transform: rotateY(-160deg);
+        -o-transform: rotateY(-160deg);
+        transform: rotateY(-160deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes flipBook2 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-150deg);
+        -ms-transform: rotateY(-150deg);
+        -o-transform: rotateY(-150deg);
+        transform: rotateY(-150deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+/* Firefox */
+@-moz-keyframes flipBook2 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-150deg);
+        -ms-transform: rotateY(-150deg);
+        -o-transform: rotateY(-150deg);
+        transform: rotateY(-150deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes flipBook2 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-150deg);
+        -ms-transform: rotateY(-150deg);
+        -o-transform: rotateY(-150deg);
+        transform: rotateY(-150deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+/* Opera */
+@-o-keyframes flipBook2 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-150deg);
+        -ms-transform: rotateY(-150deg);
+        -o-transform: rotateY(-150deg);
+        transform: rotateY(-150deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes flipBook3 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-140deg);
+        -ms-transform: rotateY(-140deg);
+        -o-transform: rotateY(-140deg);
+        transform: rotateY(-140deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+/* Firefox */
+@-moz-keyframes flipBook3 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-140deg);
+        -ms-transform: rotateY(-140deg);
+        -o-transform: rotateY(-140deg);
+        transform: rotateY(-140deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes flipBook3 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-140deg);
+        -ms-transform: rotateY(-140deg);
+        -o-transform: rotateY(-140deg);
+        transform: rotateY(-140deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+/* Opera */
+@-o-keyframes flipBook3 {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(-140deg);
+        -ms-transform: rotateY(-140deg);
+        -o-transform: rotateY(-140deg);
+        transform: rotateY(-140deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+}
+
+/*第二屏*/
+.second {
+    background: url(../images/574.jpg);
+    background-size: 100%;
+}
+/*关于我*/
+.second .me{
+    position: relative;
+    top: 60px;
+    font-family: "microsoft yahei";
+    color: #666;
+    text-align: center;
+}
+.second .me h3{
+    position: absolute;
+    left: 40px;
+    transform: translate(2000px, 0);
+}
+.second.current .me h3{
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 1s;
+}
+/*教育背景*/
+.second .educational h4{
+    position: absolute;
+    top:50px;
+    left: 150px;
+    transform: translate(-2000px, 0);
+}
+.second .educational p{
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    text-align:left;
+    font-weight: bold;
+    transform: translate(-2000px, 0);
+}
+.second.current .educational h4,
+.second.current .educational p {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 2s;
+}
+/*求职意向*/
+.second .intention h4{
+    position: absolute;
+    top:150px;
+    left: 150px;
+    transform: translate(2000px, 0);
+}
+.second .intention p{
+    position: absolute;
+    top: 150px;
+    left: 200px;
+    text-align:left;
+    font-weight: bold;
+    transform: translate(2000px, 0);
+}
+.second.current .intention h4,
+.second.current .intention p {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 3s;
+}
+/*自我评价*/
+.second .myself h4{
+    position: absolute;
+    top:230px;
+    left: 150px;
+    transform: translate(-2000px, 0);
+}
+.second .myself p{
+    position: absolute;
+    top: 230px;
+    left: 200px;
+    text-align:left;
+    font-weight: bold;
+    transform: translate(-2000px, 0);
+}
+.second.current .myself h4,
+.second.current .myself p {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 4s;
+}
+/*无缝滚动*/
+.second-box{
+    position:absolute;
+    bottom:50px;
+    left: 0;
+    width:1368px;
+    height: 150px;
+    border: 1px solid #40C7C0;
+    box-shadow: 0 0 25px 0 #40C7C0;
+    overflow: hidden;
+}
+
+.second-box ul{
+    width:2700px;
+    animation: move 7s linear infinite;
+}
+
+.second-box ul li{
+     float: left;
+     width: 136px;
+     height:150px;
+ }
+.second-box ul li img{
+    width: 136px;
+    height:150px;
+    display: block;
+}
+
+.box:hover ul{
+    /* 动画的播放状态 paused 暂停  running　播放　*/
+    animation-play-state: paused;
+}
+.second-box:hover ul{
+    /* 动画的播放状态 paused 暂停  running　播放　*/
+    animation-play-state: paused;
+}
+
+@keyframes move {
+    0%{
+        transform:translateX(0px);
+    }
+
+    100%{
+        transform:translateX(-882px);
+    }
+}
+/*第三屏*/
+.third {
+    background: url(../images/12106.jpg);
+    background-size: 100%;
+    padding: 0 60px;
+}
+/*专业技能*/
+.third .skill{
+    position: absolute;
+    top: 100px;
+    left: 45%;
+    font-family: "microsoft yahei";
+    color: #666;
+    transform: translate(-2000px,0);
+}
+.third.current .skill{
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 1s;
+}
+/*展示栏*/
+.third-container {
+    position: absolute;
+    top: 60px;
+    left: 2px;
+}
+
+/*= common css to all effects =*/
+.single-member {
+    width: 220px;
+    float: left;
+    margin: 30px 2.5%;
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.member-image img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 10px 0 0;
+    text-transform: uppercase;
+}
+
+h5 {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0 0 15px;
+    line-height: 22px;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 0 30px;
+    margin-bottom: 10px;
+}
+
+.social-touch a {
+    display: inline-block;
+    width: 27px;
+    height: 26px;
+    vertical-align: middle;
+    margin: 0 2px;
+    background-image: url(../images/daomeixiong-001.jpg);
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.social-touch a:hover {
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.fb-touch {
+    background-position: 0 0;
+}
+
+.tweet-touch {
+    background-position: -35px 0;
+}
+
+.linkedin-touch {
+    background-position: -71px 0;
+}
+
+.icon-colored .fb-touch {
+    background-position: 0 -27px;
+}
+
+.icon-colored .tweet-touch {
+    background-position: -35px -27px;
+}
+
+.icon-colored .linkedin-touch {
+    background-position: -71px -27px;
+}
+
+/*= common css to all effects end =*/
+
+/*= effect-2 css =*/
+.effect-2 {
+    position: absolute;
+    left: 30px;
+    border-radius: 20%;
+    box-shadow: 0 0 25px 0 #40C7C0;
+    max-height: 302px;
+    min-height: 302px;
+    overflow: hidden;
+}
+
+.effect-2 h3 {
+    padding-top: 7px;
+    line-height: 33px;
+}
+
+.effect-2 .member-image {
+    border-bottom: 5px solid #1fb554;
+    height: 212px;
+    overflow: hidden;
+    width: 100%;
+    transition: 0.4s;
+    display: inline-block;
+    float: none;
+    vertical-align: middle;
+    -webkit-background-size: 100%
+}
+
+.effect-2 .member-info {
+    transition: 0.4s;
+}
+
+.effect-2 .member-image img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.effect-2 .social-touch {
+    background-color: #1fb554;
+    float: left;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    padding: 5px 0;
+    width: 100%;
+    transition: 0.4s;
+}
+
+.effect-2:hover .member-image {
+    height: 81px;
+    transition: 0.4s;
+}
+
+/*= effect-2 css end =*/
+
+/*= effect-3 css =*/
+.effect-3 {
+    position: absolute;
+    top: 100px;
+    left: 300px;
+    border-radius: 20%;
+    max-height: 302px;
+    min-height: 302px;
+    box-shadow: 0 0 25px 0 #40C7C0;
+    overflow: hidden;
+}
+
+.effect-3 h3 {
+    padding-top: 7px;
+    line-height: 33px;
+}
+
+.effect-3 .member-image {
+    border-bottom: 5px solid #e5642b;
+    transition: 0.4s;
+    height: 212px;
+    width: 100%;
+    display: inline-block;
+    float: none;
+    vertical-align: middle;
+}
+
+.effect-3 .member-info {
+    transition: 0.4s;
+}
+
+.effect-3 .member-image img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.effect-3 .social-touch {
+    background-color: #e5642b;
+    float: left;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    padding: 5px 0;
+    width: 100%;
+    transition: 0.4s;
+}
+
+.effect-3:hover .member-image {
+    border-bottom: 0;
+    border-radius: 0 0 50px 50px;
+    height: 81px;
+    display: inline-block;
+    overflow: hidden;
+    width: 109px;
+    transition: 0.4s;
+}
+
+/*= effect-3 css end =*/
+
+/*= effect-7 css =*/
+.effect-7 {
+    position: absolute;
+    left: 840px;
+    top: 100px;
+    max-height: 302px;
+    min-height: 302px;
+    box-shadow: 0 0 25px 0 #40C7C0;
+    border-radius: 20%;
+    overflow: hidden;
+}
+
+.effect-7 h3 {
+    line-height: 35px;
+}
+
+.effect-7 .member-image {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-radius: 20%;
+    transition: 0.4s;
+    z-index: 1;
+}
+
+.effect-7 .member-image img {
+    border-radius: 20%;
+    width: 100%;
+    transition: 0.4s;
+    opacity: 1;
+    height: 100%;
+}
+
+.effect-7 .more-info {
+    height: 208px;
+    border-radius: 20%;
+    transition: 0.4s;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+}
+
+.effect-7:hover .member-image {
+    bottom: 40%;
+}
+
+.effect-7:hover .member-image img {
+    width: 0;
+    height: 0;
+    transition: 0.4s;
+    opacity: 0;
+}
+
+/*= effect-7 css end =*/
+
+/*= effect-9 css =*/
+.effect-9 {
+    position: absolute;
+    left: 570px;
+    top: 200px;
+    border-radius: 20%;
+    max-height: 302px;
+    min-height: 289px;
+    box-shadow: 0 0 25px 0 #40C7C0;
+    overflow: hidden;
+    perspective: 800px;
+}
+
+.effect-9 h3 {
+    line-height: 35px;
+}
+
+.effect-9 .member-image {
+    /*position: absolute;*/
+    width: 100%;
+    transition: 0.4s;
+    z-index: 1;
+}
+
+.effect-9 .member-image img {
+    width: 100%;
+    transition: 0.4s;
+    height: 100%;
+}
+
+.effect-9 .more-info {
+    height: 208px;
+    transition: 0.4s;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+}
+
+.effect-9:hover .member-image {
+    transform: translateY(100%);
+    transition: 0.4s;
+}
+
+/*= effect-9 css end =*/
+
+/*= effect-8 css =*/
+.effect-8 {
+    position: absolute;
+    border-radius: 20%;
+    left: 1110px;
+    max-height: 302px;
+    min-height: 302px;
+    box-shadow: 0 0 25px 0 #40C7C0;
+    overflow: hidden;
+    perspective: 800px;
+}
+
+.effect-8 h3 {
+    line-height: 35px;
+}
+
+.effect-8 .member-image {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: 0.4s;
+    z-index: 1;
+}
+
+.effect-8 .member-image img {
+    width: 100%;
+    transition: 0.4s;
+    height: 100%;
+}
+
+.effect-8 .more-info {
+    height: 208px;
+    transition: 0.4s;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+}
+
+.effect-8:hover .member-image {
+    transform: rotateX(82deg);
+    transform-origin: center bottom 0;
+    transition: 0.4s;
+}
+
+/*= effect-8 css end =*/
+
+/*= Media Query
+=============== */
+@media only screen and (max-width: 980px) {
+    .row {
+        width: 100%;
+        margin: 110px 0;
+    }
+
+    .team-members {
+        text-align: center;
+    }
+
+    .single-member {
+        float: none;
+        display: inline-block;
+        vertical-align: bottom;
+    }
+}
+
+/*第四屏*/
+.fourth {
+    padding: 0 85px;
+    background: url(../images/7.jpg);
+    background-size: 100%;
+}
+
+/*我的作品*/
+.fourth .works{
+    position: absolute;
+    top: 120px;
+    left: 340px;
+    font-family: "microsoft yahei";
+    color: #666;
+    transform: translate(-2000px,0);
+}
+.fourth.current .works {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 1s;
+    z-index: 99;
+}
+/*立体图*/
+.fourth-box{
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    margin-top: 110px;
+    margin-left: 1000px;
+    /*margin: 90px 100px;*/
+    position: relative;
+    /*让子盒子保持3d效果*/
+    transform-style:preserve-3d;
+
+    animation: box 1s linear forwards 1s,rot 6s linear 14s infinite;
+}
+
+.fourth-box div{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+
+}
+
+.fourth-box .left{
+    background: url(../images/dd6.jpg)no-repeat;
+    border-radius: 50%;
+    -webkit-background-size: 100%;
+    animation: left 2s linear forwards 2s ;
+}
+
+.fourth-box .right{
+    background: url(../images/dd2.jpg)no-repeat;
+    border-radius: 50%;
+    -webkit-background-size: 100%;
+    animation: right 2s linear forwards 4s ;
+}
+
+.fourth-box .forward{
+    background: url(../images/dd3.jpg)no-repeat;
+    border-radius: 50%;
+    -webkit-background-size: 100%;
+    animation: forward 1.5s linear forwards 6s ;
+}
+
+.fourth-box .back{
+    background: url(../images/dd13.jpg)no-repeat;
+    border-radius: 50%;
+    -webkit-background-size: 100%;
+    animation: back 1.5s linear forwards  7.5s ;
+}
+
+
+.fourth-box .up{
+    background: url(../images/dd8.jpg)no-repeat;
+    border-radius: 50%;
+    -webkit-background-size: 100%;
+    animation: up 2s linear forwards 9s ;
+}
+
+.fourth-box .down{
+    background: url(../images/dd12.jpg)no-repeat;
+    border-radius: 50%;
+    -webkit-background-size: 100%;
+    animation: down 2s linear forwards 11s ;
+}
+
+@keyframes box {
+    0%{
+    }
+
+    100%{
+        transform:rotateY(-50deg) rotateX(30deg);
+    }
+}
+
+@keyframes left {
+    0%{
+        background-color: rgba(0,255,0,0.5);
+    }
+
+    5%{
+        background-color: rgba(0,255,0,0);
+    }
+
+    10%{
+        background-color: rgba(0,255,0,0.5);
+        transform:translateX(0);
+    }
+
+    50%{
+        transform:translateX(-75px);
+    }
+
+    100%{
+        background-color: rgba(0,255,0,0.4);
+        transform:translateX(-75px) rotateY(-90deg);
+    }
+}
+
+@keyframes right {
+    0%{
+        background-color: rgba(255,0,0,0.5);
+    }
+
+    5%{
+        background-color: rgba(0,0,255,0);
+    }
+
+    10%{
+        background-color: rgba(255,0,0,0.5);
+        transform:translateX(0);
+    }
+
+    50%{
+        transform:translateX(75px);
+    }
+
+    100%{
+        background-color: rgba(255,0,0,0.3);
+        transform:translateX(75px) rotateY(90deg) ;
+    }
+}
+
+@keyframes forward {
+    0%{
+        background-color: rgba(255,255,0,0.5);
+    }
+
+    10%{
+        background-color: rgba(0,0,255,0);
+    }
+
+    20%{
+        background-color: rgba(255,255,0,0.5);
+    }
+
+    100%{
+        background-color: rgba(255,255,0,0.4);
+        transform:translateZ(75px);
+    }
+}
+
+@keyframes back {
+    0%{
+        background-color: rgba(0,255,255,0.5);
+    }
+
+    10%{
+        background-color: rgba(0,255,255,0);
+    }
+
+    20%{
+        background-color: rgba(0,255,255,0.5);
+    }
+
+    100%{
+        background-color: rgba(0,255,255,0.5);
+        transform:translateZ(-75px);
+    }
+}
+
+@keyframes up {
+    0%{
+        background-color: rgba(0,111,255,0.5);
+    }
+
+    5%{
+        background-color: rgba(0,111,255,0);
+    }
+
+    10%{
+        background-color: rgba(0,111,255,0.5);
+        transform:translateY(0px)
+    }
+
+    50%{
+        transform:translateY(-75px);
+    }
+
+    100%{
+        background-color: rgba(0,111,255,0.4);
+        transform:translateY(-75px) rotateX(90deg);
+    }
+}
+
+
+@keyframes down {
+    0%{
+        background-color: rgba(255,111,12,0.5);
+    }
+
+    5%{
+        background-color: rgba(0,111,255,0);
+    }
+
+    10%{
+        background-color: rgba(255,111,12,0.5);
+        transform:translateY(0px)
+    }
+
+    50%{
+        transform:translateY(75px);
+    }
+
+    100%{
+        background-color: rgba(255,111,12,0.4);
+        transform:translateY(75px) rotateX(-90deg);
+    }
+}
+
+@keyframes rot {
+    0%{
+        transform:rotateY(-50deg) rotateX(30deg);
+    }
+
+    100%{
+        transform:rotateY(310deg) rotateX(390deg) ;
+    }
+}
+
+@keyframes bigger {
+    0%{
+    }
+
+    100%{
+        text-shadow: 0px 0px 30px #fdffd1;
+        color:blue;
+    }
+}
+
+/*切割轮播图*/
+.fourth-view{
+    width:565px;
+    height: 350px;
+    border: 1px solid #D83C47;
+    box-shadow: 0 0 25px 0 #D83C47;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.fourth-view ul li{
+    width: 113px;
+    height:350px;
+    float: left;
+    position: relative;
+
+    /* 让里面的子盒子保持3d 效果*/
+
+    transform-style:preserve-3d;
+    transition:all 1s;
+
+    /*transform:rotateX(-45deg) rotateY(-27deg);*/
+}
+
+.fourth-view li span{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.fourth-view li span:nth-child(1){
+    transform:translateZ(150px);
+    background: url(../images/07.jpg)no-repeat;
+    background-size:565px 350px;
+}
+
+.fourth-view li span:nth-child(2){
+    transform:rotateX(90deg) translateZ(150px);
+    background-size: 660px 350px;
+    background: url(../images/08.jpg)no-repeat;
+    background-size:565px 350px;
+}
+
+.fourth-view li span:nth-child(3){
+    transform:rotateX(180deg) translateZ(150px);
+    background: url(../images/03.jpg)no-repeat;
+    background-size:565px 350px;
+}
+
+.fourth-view li span:nth-child(4){
+    transform:rotateX(-90deg) translateZ(150px);
+    background: url(../images/04.jpg)no-repeat;
+    background-size:565px 350px;
+}
+
+.fourth-view li:nth-child(1) span{
+
+}
+
+.fourth-view li:nth-child(2) span{
+    background-position: -112px 0;
+}
+.fourth-view li:nth-child(3) span{
+    background-position: -224px 0;
+}
+.fourth-view li:nth-child(4) span{
+    background-position: -336px 0;
+}
+.fourth-view li:nth-child(5) span{
+    background-position: -448px 0;
+}
+
+
+/*左右按钮*/
+.fourth-view .prev,.fourth-view .next{
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    border-radius: 0 10px 10px 0;
+    background-color: rgba(235,204,181,0.5);
+    line-height: 60px;
+    font-size:50px;
+    text-align: center;
+    color:red;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    text-decoration: none;
+}
+
+.fourth-view .next{
+    border-radius:  10px 0 0 10px ;
+    left:auto;
+    right:0;
+}
+
+/*第五屏*/
+.fifth {
+    background: url(../images/5.jpg);
+    background-size: 100%;
+}
+/*联系我*/
+.fifth .contact h3{
+    position: absolute;
+    top: 80px;
+    left: 320px;
+    font-family: "microsoft yahei";
+    color: #666;
+    transform: translate(-2000px,0);
+}
+
+.fifth.current .contact h3 {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 1s;
+    z-index: 99;
+}
+/*联系电话*/
+.fifth .contact .tel span{
+     position: absolute;
+     top:180px;
+     left:320px;
+     width: 30px;
+     height: 30px;
+     font-family: "microsoft yahei";
+     color: #666;
+     background:url(../images/FmCwwASVEarsHDVyIAnBqq_WSrLp.png)no-repeat;
+     transform: translate(2000px, 0);
+}
+.fifth .contact .tel p{
+    position: absolute;
+    top:180px;
+    left: 340px;
+    text-align:left;
+    font-weight: bold;
+    font-family: "microsoft yahei";
+    color: #666;
+    transform: translate(2000px, 0);
+}
+.fifth.current .contact .tel span,
+.fifth.current .contact .tel p {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 2s;
+}
+/*QQ*/
+.fifth .contact .qq span{
+    position: absolute;
+    top:230px;
+    left:320px;
+    width: 30px;
+    height: 30px;
+    font-family: "microsoft yahei";
+    color: #666;
+    background:url(../images/FoQ3PM6mgiTEE_OgjUxU2rUpoTGB.png)no-repeat;
+    transform: translate(-2000px, 0);
+}
+.fifth .contact .qq p{
+    position: absolute;
+    top:230px;
+    left: 340px;
+    text-align:left;
+    font-weight: bold;
+    font-family: "microsoft yahei";
+    color: #666;
+    transform: translate(-2000px, 0);
+}
+.fifth.current .contact .qq span,
+.fifth.current .contact .qq p {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 3s;
+}
+/*微信*/
+.fifth .contact .wx span{
+    position: absolute;
+    top:280px;
+    left:320px;
+    width: 30px;
+    height: 30px;
+    font-family: "microsoft yahei";
+    color: #666;
+    background:url(../images/FmNrt21d2I8YjUuU45kSQ8z7_3hC.png)no-repeat;
+    transform: translate(2000px, 0);
+}
+.fifth .contact .wx p{
+    position: absolute;
+    top:280px;
+    left: 340px;
+    text-align:left;
+    font-weight: bold;
+    font-family: "microsoft yahei";
+    color: #666;
+    transform: translate(2000px, 0);
+}
+.fifth.current .contact .wx span,
+.fifth.current .contact .wx p {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 4s;
+}
+/*邮箱*/
+.fifth .contact .yx span{
+    position: absolute;
+    top:330px;
+    left:320px;
+    width: 30px;
+    height: 30px;
+    font-family: "microsoft yahei";
+    color: #666;
+    background:url(../images/FlYY8PLz_Fwv7rsQLl4pcSimhdFn.png)no-repeat;
+    transform: translate(-2000px, 0);
+}
+.fifth .contact .yx p{
+    position: absolute;
+    top:330px;
+    left: 340px;
+    text-align:left;
+    font-weight: bold;
+    font-family: "microsoft yahei";
+    color: #666;
+    transform: translate(-2000px, 0);
+}
+.fifth.current .contact .yx span,
+.fifth.current .contact .yx p {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s 5s;
+}
+/*动画*/
+.sun {
+    position: absolute;
+    left: 150px;
+    top: 150px;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.sun::before,
+.sun::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+
+    /*调用动画*/
+    animation: bigger 1.5s infinite;
+}
+
+.sun::after {
+    animation-delay: 0.75s;
+}
+
+/*sun 动画*/
+@keyframes bigger {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/*波涛*/
+.bottom {
+    position: absolute;
+    width: 100%;
+    height: 275px;
+    left: 0;
+    bottom: 0;
+    /*border: 1px solid #000;*/
+}
+
+.bottom::before,
+.bottom::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../images/bt1.png) no-repeat left bottom;
+
+    opacity: 0.7;
+
+    /*调用动画*/
+    animation: upDown 1s infinite alternate;
+}
+
+.bottom::after {
+    background: url(../images/bt2.png) no-repeat left bottom;
+    animation-delay: 0.5s;
+}
+
+/*波涛动画*/
+@keyframes upDown {
+    0% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(30px);
+    }
+}
+
+/*扑克*/
+.cp {
+    width: 230px;
+    height: 300px;
+    -webkit-background-size: 100%;
+}
+
+.pk {
+    width: 100%;
+    margin: 100px auto;
+    position: relative;
+
+    -webkit-background-size: 100%;
+    transform-origin: center bottom;
+}
+
+.pk .cp {
+    border-radius: 30%;
+    position: absolute;
+    right: 300px;
+    top: 0;
+    /*过渡*/
+    transition: all 1s;
+    box-shadow: 0 0 5px 0 #666;
+    transform-origin: center bottom;
+}
+
+/* 每一张图片旋转的角度不一样*/
+
+.pk:hover img:nth-child(6) {
+    transform: rotate(10deg);
+}
+
+.pk:hover img:nth-child(5) {
+    transform: rotate(20deg);
+}
+
+.pk:hover img:nth-child(4) {
+    transform: rotate(30deg);
+}
+
+.pk:hover img:nth-child(3) {
+    transform: rotate(40deg);
+}
+
+.pk:hover img:nth-child(2) {
+    transform: rotate(50deg);
+}
+
+.pk:hover img:nth-child(1) {
+    transform: rotate(60deg);
+}
+
+.pk:hover img:nth-child(8) {
+    transform: rotate(-10deg);
+}
+
+.pk:hover img:nth-child(9) {
+    transform: rotate(-20deg);
+}
+
+.pk:hover img:nth-child(10) {
+    transform: rotate(-30deg);
+}
+
+.pk:hover img:nth-child(11) {
+    transform: rotate(-40deg);
+}
+
+.pk:hover img:nth-child(12) {
+    transform: rotate(-50deg);
+}
+
+.pk:hover img:nth-child(13) {
+    transform: rotate(-60deg);
+}
